@@ -1,30 +1,22 @@
-// const yearSelector = document.getElementById("yearSelect");
+const divPainting = document.getElementById("pared");
+let newDiv= [];
 
-// yearSelector.addEventListener("change", (e) => {
-//     //console.log(parseInt(e.target.value))
+for (let i = 0; i < newInjuries.length; i++) {
 
-//        console.log( data.filterByYear(INJURIES, parseInt(e.target.value) ));
+    newDiv[i] = document.createElement("DIV");
+    newDiv[i].className = "container";
 
-    /*const yearSelected = parseInt(yearSelector.value);
-    let newArr = [];
-    const x = data.filterByYear(yearSelected)
-
-    newArr.push(x);
-
-    console.log(yearSelected);
-    console.log(newArr);
-    return newArr;
-
-    */
-
-
-    // for(let i = 0; i < INJURIES.length; i++){
-    //     if(parseInt(yearSelected) === parseInt(INJURIES[i].Year)){
-    //        arr.push(INJURIES[i]); 
-    //     }
-    
-
-    // return functions.filterByYear(yearSelected);
-    
-// }); 
-
+    let yearTemp = `
+        <article>
+            <p> Año: ${newInjuries[i]['Año']} .</p>
+            <p> Botes recreacionales: ${newInjuries[i]['Botes recreacionales']} .</p>
+            <p> Ciclistas: ${newInjuries[i]['Ciclistas']} .</p>
+            <p> Ocupantes de bus: ${newInjuries[i]['Ocupantes de bus']} .</p>
+            <p> Motociclistas: ${newInjuries[i]['Motociclistas']} .</p>
+            <p> Peatones: ${newInjuries[i]['Peatones']} .</p>
+            <p> Pasajeros de auto: ${newInjuries[i]['Pasajeros de auto']} .</p>
+        </article>
+    `
+    newDiv[i].innerHTML = yearTemp;
+    divPainting.appendChild(newDiv[i]);
+}
