@@ -24,7 +24,7 @@ for(let i = 0; i < INJURIES.length; i++) {
     }
     newInjuries.push(obj)
 }
-console.log(newInjuries)
+// console.log(newInjuries)
 newInjuries
 
 
