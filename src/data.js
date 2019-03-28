@@ -28,6 +28,28 @@ console.log(newInjuries)
 newInjuries
 
 
+const mostrar = (data, divPainted) => {
+  let newDiv= [];
+  for (let i = 0; i < data.length; i++) {
+
+      newDiv[i] = document.createElement("DIV");
+      newDiv[i].className = "containerA";
+  
+      let yearTemp = `
+          <article>
+              <p> Año: ${data[i]['Año']} .</p>
+              <p> Botes recreacionales: ${data[i]['Botes recreacionales']} .</p>
+              <p> Ciclistas: ${data[i]['Ciclistas']} .</p>
+              <p> Ocupantes de bus: ${data[i]['Ocupantes de bus']} .</p>
+              <p> Motociclistas: ${data[i]['Motociclistas']} .</p>
+              <p> Peatones: ${data[i]['Peatones']} .</p>
+              <p> Pasajeros de auto: ${data[i]['Pasajeros de auto']} .</p>
+          </article>
+      `
+      newDiv[i].innerHTML = yearTemp;
+      divPainted.appendChild(newDiv[i]);
+  }
+}
 
 
 
