@@ -86,3 +86,20 @@ document.getElementById("go-to-by-indicators").addEventListener("click", () => {
     })
 
 })
+
+
+// const order = (arrTypeCausantes) => {
+//     arrTypeCausantes.sort();
+//     // console.log(arrTypeCausantes);
+    
+// }
+// order(arrTypeCausantes);
+
+// const orderReverse = (arrTypeCausantes) => {
+//     arrTypeCausantes.reverse();
+//     console.log(arrTypeCausantes);
+    
+// }
+// orderReverse(arrTypeCausantes);
+
+
