@@ -73,7 +73,6 @@ header{
     flex-direction: column;
     justify-content: space-around; 
     margin-top: 10%;
-    /* background-color: aqua; */
 }
 
 .bifurcation-phrase{
@@ -109,3 +108,13 @@ header{
     font-size: 2em;
 }
 
+.select-section{
+    
+}
+
+select{
+	cursor: pointer;
+	background-color: white;
+	box-shadow: 0 2px 0 white;
+    border-radius: 2px;
+}
