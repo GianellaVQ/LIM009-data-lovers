@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel:900');
+
 *{
 margin: 0%;
 padding: 0%;
@@ -5,35 +7,114 @@ text-align: center;
 box-sizing: border-box;
 }
 
+body{
+    background-image: url(./imgs/background-mobile.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
 .container{
-    background-color: rgb(144, 211, 255);
     width: 90%;
+    height: 98vh;
     margin: 2% auto;
-    display: table;
     padding: 2% 0%;
+    display: flex;
 }
 
-.sm-3col{
-    float: left;
-    background-color: rgb(255, 255, 255, 0.5);
-    margin: 0% 2%;
-    width: 23.5%;
+.center{
+    align-items: center;
+    justify-content: center;
 }
 
-.sm-9col{
-    float: left;
-    width: 70.5%;
-    background-color: rgb(255, 255, 255, 0.5);
+button{
+    text-decoration: none;
+    border: none;
+    padding: 5% 7%;
+    font-size: 2.5em;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 3px 5px;
+    border-radius: 10px;
 }
 
-.sm-4col{
-    float: left;
-    background-color: rgb(255, 255, 255, 0.5);
-    width: 30.7%;
-    margin: 0% 2%;
+button:hover {
+    background-color: rgba(248, 212, 212, 0.445)
 }
 
-h1{
-    font-size: 3.8em;
+.the-title{
+    font-size: 11em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 5px 7px grey;
 }
 
+.the-phrase{
+    padding: 3% 26%;
+    font-size: 3em;
+    margin-bottom: 5%;
+}
+
+header{
+    background-color: rgba(255, 255, 255, 0.377);
+    width: 95%;
+    margin: 2% auto;
+    align-items: center;
+    justify-content: flex-start;
+    height: 7vh;
+    padding-left: 8%;
+}
+
+.header-title{
+    font-size: 4em;
+    font-family: 'Cinzel', serif;
+}
+
+.decision{
+    height: 70vh;
+    flex-direction: column;
+    justify-content: space-around; 
+    margin-top: 10%;
+}
+
+.bifurcation-phrase{
+    padding: 0% 25%;
+    font-size: 4em;
+}
+
+.bifurcation-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.go-to-years{
+    background-image: url(./imgs/by-years.jpg);
+    background-size: 20% 14%;
+    background-attachment: fixed;
+    background-position: center;
+    color: rgba(255, 255, 255); 
+}
+
+.go-to-indicators{
+    background-image: url(./imgs/by-indicator.jpg);
+    background-size: 60% 60%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: left;
+    color: rgba(255, 255, 255);
+}
+
+.bifurcation-explications{
+    display: flex;
+    justify-content: space-around;
+    font-size: 2em;
+}
+
+.select-section{
+    
+}
+
+select{
+	cursor: pointer;
+	background-color: white;
+	box-shadow: 0 2px 0 white;
+    border-radius: 2px;
+}

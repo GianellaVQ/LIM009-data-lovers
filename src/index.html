@@ -6,60 +6,40 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="container">
-      <div class="row">
-        <figure class="sm-3col">
-          <img src="./imgs/insurance.png" alt="">
-        </figure>
-        <div class="sm-9col">
-          <h1>Heridos en USA.</h1>
-        </div>
+
+    <header id="injuries-header">
+      <div>
+        <h1 class="header-title">Heridos en USA.</h1>
       </div>
     </header>
+    <section id="first-view" class="container center">
+      <div>
+        <h1 class="the-title">Heridos de USA</h1>
+        <p class="the-phrase">Un recuento de 1960 a la actualidad.</p>
+        <button id="go-to-folios">Ir a folios</button>
+      </div>
+    </section>
 
-    <section class="container">
-      <div class="row">
-        <div class="sm-4col">
-        </div>  
-        <div class="sm-4col">
-          <select id="year-select">
-            <option value="">Año</option>
-            <option value="1960">1960</option>
-            <option value="1965">1965</option>
-            <option value="1970">1970</option>
-            <option value="1975">1975</option>
-            <option value="1980">1980</option>
-            <option value="1985">1985</option>
-            <option value="1990">1990</option>
-            <option value="1995">1995</option>
-            <option value="2000">2000</option>
-            <option value="2001">2001</option>
-            <option value="2002">2002</option>
-            <option value="2003">2003</option>
-            <option value="2004">2004</option>
-            <option value="2005">2005</option>
-            <option value="2006">2006</option>
-            <option value="2007">2007</option>
-            <option value="2008">2008</option>
-            <option value="2009">2009</option>
-            <option value="2010">2010</option>
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
-            <option value="2013">2013</option>
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-          </select>
+    <section id="decision-section" class="container decision">
+      <div>
+        <h2 class="bifurcation-phrase">Conoce nuestra información organizada por:</h2>
+      </div>
+      <div>
+        <div class="bifurcation-buttons">
+          <button id="go-to-by-indicators" class="go-to-indicators">CAUSANTE</button>
+          <button id="go-to-by-years" class="go-to-years">AÑOS</button>
         </div>
-        <div class="sm-4col">
+        <div class="bifurcation-explications">
+          <p>khnsad</p>
+          <p>alkdmas</p>
         </div>
       </div>
     </section>
 
-    <section class="container">
-      <div class="row">
-        <div id="data"></div>
-      </div>
+    <section id="filter-select">
+    </section>
+
+    <section id="pared">
     </section>
 
     <script src="./data/injuries/injuries.js"></script>
