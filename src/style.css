@@ -11,6 +11,7 @@ body{
     background-image: url(./imgs/background-mobile.jpg);
     background-size: 100% 100%;
     background-attachment: fixed;
+
 }
 
 .container{
@@ -29,8 +30,8 @@ body{
 button{
     text-decoration: none;
     border: none;
-    padding: 5% 7%;
-    font-size: 2.5em;
+    padding: 4% 6%;
+    font-size: 1.5em;
     cursor: pointer;
     font-weight: bold;
     box-shadow: 3px 5px;
@@ -42,14 +43,14 @@ button:hover {
 }
 
 .the-title{
-    font-size: 11em;
+    font-size: 3.5em;
     font-family: 'Cinzel', serif;
     text-shadow: 5px 7px grey;
 }
 
 .the-phrase{
     padding: 3% 26%;
-    font-size: 3em;
+    font-size: 2em;
     margin-bottom: 5%;
 }
 
@@ -64,7 +65,7 @@ header{
 }
 
 .header-title{
-    font-size: 4em;
+    font-size: 1em;
     font-family: 'Cinzel', serif;
 }
 
@@ -77,7 +78,7 @@ header{
 
 .bifurcation-phrase{
     padding: 0% 25%;
-    font-size: 4em;
+    font-size: 2em;
 }
 
 .bifurcation-buttons{
@@ -87,34 +88,50 @@ header{
 
 .go-to-years{
     background-image: url(./imgs/by-years.jpg);
-    background-size: 20% 14%;
     background-attachment: fixed;
     background-position: center;
-    color: rgba(255, 255, 255); 
+    color: rgba(255, 255, 255);
+    padding: 3% 5%;
+    font-size: 1.5em;
 }
 
 .go-to-indicators{
     background-image: url(./imgs/by-indicator.jpg);
-    background-size: 60% 60%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: left;
     color: rgba(255, 255, 255);
+    padding: 3% 5%;
+    font-size: 1.5em;
 }
 
 .bifurcation-explications{
     display: flex;
     justify-content: space-around;
-    font-size: 2em;
+    margin-top: 5%;
+    font-size: 1.2em;
 }
 
-.select-section{
+.select-section {
     
 }
 
-select{
+select {
 	cursor: pointer;
 	background-color: white;
 	box-shadow: 0 2px 0 white;
     border-radius: 2px;
+}
+
+@media only screen and (min-width: 600px) {
+    body{
+        background-image: url(./imgs/background-tablet.jpg);
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    body{
+        background-image: url(./imgs/background-ipadpro.jpg
+    )
+    }
 }
