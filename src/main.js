@@ -86,7 +86,6 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
     })
 });
 
-
 document.getElementById("go-to-by-indicators").addEventListener("click", () => {
     decisionScreen.style.display = "none";
 
@@ -114,7 +113,6 @@ document.getElementById("go-to-by-indicators").addEventListener("click", () => {
     aDiv.innerHTML = selectTemplate;
     selectSection.appendChild(aDiv);
     const indicatorSelector = document.getElementById("indicator-select");
-
 
     indicatorSelector.addEventListener("change", () => {
     let indicatorSelected = indicatorSelector.value;

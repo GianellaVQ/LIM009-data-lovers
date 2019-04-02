@@ -58,7 +58,6 @@ const sortYearDsc = (dataByYear) => {
 
 console.log(sortYearDsc(newData(INJURIES)))
 
-
 const filterByIndicator = (data, indicator) => {
   //creamos un array que tendrá los valores del indicador seleccionado en todos los años
   let arr = [];
