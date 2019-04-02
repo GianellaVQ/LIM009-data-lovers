@@ -3,7 +3,7 @@ const newData = (data) => {
 
   for (let i = 0; i < data.length; i++) {
     const newObj = {
-      'Año' : data[i].Year,
+      'Año' : parseInt(data[i].Year),
       'Tripulantes' : data[i].Total_Injured_Persons_Recreational_Boating === null ? '--' : data[i].Total_Injured_Persons_Recreational_Boating,
       'Ciclistas' : data[i].Total_Injured_Persons_Pedalcyclists === null ? '--' : data[i].Total_Injured_Persons_Pedalcyclists,
       'Ocupantes de bus' : data[i].Total_Injured_Persons_Bus_Occupants === null ? '--' : data[i].Total_Injured_Persons_Bus_Occupants,
@@ -17,30 +17,6 @@ const newData = (data) => {
   return newInjuries
 };
 
-
-const showByYear = (data, sectionPainted) => {
-  let newDiv= [];
-  for (let i = 0; i < data.length; i++) {
-
-      newDiv[i] = document.createElement("DIV");
-      newDiv[i].className = "containerA";
-  
-      let yearTemp = `
-          <article>
-              <p> Año: ${data[i]['Año']} .</p>
-              <p> Tripulantes: ${data[i]['Tripulantes']} .</p>
-              <p> Ciclistas: ${data[i]['Ciclistas']} .</p>
-              <p> Ocupantes de bus: ${data[i]['Ocupantes de bus']} .</p>
-              <p> Motociclistas: ${data[i]['Motociclistas']} .</p>
-              <p> Peatones: ${data[i]['Peatones']} .</p>
-              <p> Pasajeros de auto: ${data[i]['Pasajeros de auto']} .</p>
-          </article>
-      `
-      newDiv[i].innerHTML = yearTemp;
-      sectionPainted.appendChild(newDiv[i]);
-  }
-}
-
 const filterByYear = (data, year) => {
   let result = [];
   for(let i = 0; i < data.length; i++) {
@@ -50,6 +26,38 @@ const filterByYear = (data, year) => {
   }
   return result;
 }
+
+const sortYearAsc = (dataByYear) => {
+  const sorted = dataByYear.sort( (a, b) => {
+    if(a['Año'] > b['Año']) {
+      return 1;
+    } else if (a['Año'] < b['Año']){
+      return -1;
+    } else {
+      return 0;
+    }
+  })
+  
+  return sorted;
+}
+
+console.log(sortYearAsc(newData(INJURIES)));
+
+const sortYearDsc = (dataByYear) => {
+  const inverseSort = dataByYear.sort( (a, b) => {
+    if(a['Año'] < b['Año']) {
+      return 1;
+    } else if (a['Año'] > b['Año']){
+      return -1;
+    } else {
+      return 0;
+    }
+  })
+  
+  return inverseSort;
+}
+
+console.log(sortYearDsc(newData(INJURIES)))
 
 const filterByIndicator = (data, indicator) => {
   //creamos un array que tendrá los valores del indicador seleccionado en todos los años
@@ -78,14 +86,4 @@ const indTotalSum = (arrValues) => {
 const indAverage = (totalSumOfInd, arrAddends) => {
   return Math.round(totalSumOfInd/arrAddends.length);
 
-}
-
-const showAverageByIndicator = (indicator, average, sectionPainted) => {
-  let newDiv = document.createElement("DIV")
-  let avrTemp = `
-      <h2>${indicator}</h2>
-      <p>En promedio, anualmente, han habido ${average} ${indicator} heridos. </p>
-  `
-  newDiv.innerHTML = avrTemp;
-  sectionPainted.appendChild(newDiv);
 }
