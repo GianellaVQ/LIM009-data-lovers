@@ -16,6 +16,29 @@ document.getElementById("go-to-folios").addEventListener("click", () => {
 document.getElementById("go-to-by-years").addEventListener("click", () => {
     decisionScreen.style.display = "none";
 
+    const showByYear = (data, sectionPainted) => {
+        let newDiv= [];
+        for (let i = 0; i < data.length; i++) {
+      
+            newDiv[i] = document.createElement("DIV");
+            newDiv[i].className = "containerA";
+        
+            let yearTemp = `
+                <article>
+                    <p> Año: ${data[i]['Año']} .</p>
+                    <p> Tripulantes: ${data[i]['Tripulantes']} .</p>
+                    <p> Ciclistas: ${data[i]['Ciclistas']} .</p>
+                    <p> Ocupantes de bus: ${data[i]['Ocupantes de bus']} .</p>
+                    <p> Motociclistas: ${data[i]['Motociclistas']} .</p>
+                    <p> Peatones: ${data[i]['Peatones']} .</p>
+                    <p> Pasajeros de auto: ${data[i]['Pasajeros de auto']} .</p>
+                </article>
+            `
+            newDiv[i].innerHTML = yearTemp;
+            sectionPainted.appendChild(newDiv[i]);
+        }
+      }
+
     const selectTemplate = `
       <select id="year-select">
         <option value="">Año</option>
@@ -45,6 +68,11 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
         <option value="2015">2015</option>
         <option value="2016">2016</option>
       </select>
+
+      <select>
+        <option value="1">Ascendente</option>
+        <option value="2">Descendente</option>
+      </select>
     `
     aDiv.innerHTML = selectTemplate;
     selectSection.appendChild(aDiv);
@@ -61,6 +89,16 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
 
 document.getElementById("go-to-by-indicators").addEventListener("click", () => {
     decisionScreen.style.display = "none";
+
+    const showAverageByIndicator = (indicator, average, sectionPainted) => {
+        let newDiv = document.createElement("DIV")
+        let avrTemp = `
+            <h2>${indicator}</h2>
+            <p>En promedio, anualmente, han habido ${average} ${indicator} heridos. </p>
+        `
+        newDiv.innerHTML = avrTemp;
+        sectionPainted.appendChild(newDiv);
+      }
 
     const selectTemplate = `
       <select id="indicator-select">
@@ -82,7 +120,7 @@ document.getElementById("go-to-by-indicators").addEventListener("click", () => {
     let indicatorSelected = indicatorSelector.value;
         sectionPainting.innerHTML = "";
 
-        showAverageByIndicator(indicatorSelected, indAverage(indTotalSum(filterByIndicator(newData(INJURIES), indicatorSelected)), filterByIndicator(newData(INJURIES), indicatorSelected)), sectionPainting)
+        showAverageByIndicator(indicatorSelected, indAverage(indTotalSum(filterByIndicator(newData(INJURIES), indicatorSelected)), filterByIndicator(newData(INJURIES), indicatorSelected)), sectionPainting);
     })
 
 })
