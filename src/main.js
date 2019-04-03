@@ -69,7 +69,7 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
         <option value="2016">2016</option>
       </select>
 
-      <select>
+      <select id="order-year">
         <option value="1">Ascendente</option>
         <option value="2">Descendente</option>
       </select>
@@ -83,6 +83,18 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
         let yearSelected = parseInt(yearSelector.value);
         sectionPainting.innerHTML = "";
         showByYear(filterByYear(newData(INJURIES), yearSelected), sectionPainting);
+    })
+
+    const orderSelectorYear = document.getElementById('order-year');
+
+    orderSelectorYear.addEventListener("change",()=> {
+      let orderYearValue = parseInt(orderSelectorYear.value);
+      
+     let variable = showAscDesc(newData(INJURIES), orderYearValue)
+     showByYear(variable,sectionPainting)
+
+     
+       
     })
 });
 

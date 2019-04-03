@@ -27,37 +27,37 @@ const filterByYear = (data, year) => {
   return result;
 }
 
-const sortYearAsc = (dataByYear) => {
-  const sorted = dataByYear.sort( (a, b) => {
-    if(a['Año'] > b['Año']) {
-      return 1;
-    } else if (a['Año'] < b['Año']){
-      return -1;
-    } else {
-      return 0;
-    }
-  })
+// const sortYearAsc = (dataByYear) => {
+//   const sorted = dataByYear.sort( (a, b) => {
+//     if(a['Año'] > b['Año']) {
+//       return 1;
+//     } else if (a['Año'] < b['Año']){
+//       return -1;
+//     } else {
+//       return 0;
+//     }
+//   })
   
-  return sorted;
-}
+//   return sorted;
+// }
 
-console.log(sortYearAsc(newData(INJURIES)));
+// console.log(sortYearAsc(newData(INJURIES)));
 
-const sortYearDsc = (dataByYear) => {
-  const inverseSort = dataByYear.sort( (a, b) => {
-    if(a['Año'] < b['Año']) {
-      return 1;
-    } else if (a['Año'] > b['Año']){
-      return -1;
-    } else {
-      return 0;
-    }
-  })
+// const sortYearDsc = (dataByYear) => {
+//   const inverseSort = dataByYear.sort( (a, b) => {
+//     if(a['Año'] < b['Año']) {
+//       return 1;
+//     } else if (a['Año'] > b['Año']){
+//       return -1;
+//     } else {
+//       return 0;
+//     }
+//   })
   
-  return inverseSort;
-}
+//   return inverseSort;
+// }
 
-console.log(sortYearDsc(newData(INJURIES)))
+// console.log(sortYearDsc(newData(INJURIES)))
 
 const filterByIndicator = (data, indicator) => {
   //creamos un array que tendrá los valores del indicador seleccionado en todos los años
@@ -85,5 +85,29 @@ const indTotalSum = (arrValues) => {
 
 const indAverage = (totalSumOfInd, arrAddends) => {
   return Math.round(totalSumOfInd/arrAddends.length);
+
+}
+
+const compareYear = (a,b) => {
+
+  if (a['Año'] > b['Año']) {
+    return 1;
+  } else if (a['Año'] < b['Año']) {
+    return -1;
+  } else if (a['Año'] === b['Año']){
+    return 0;
+  }
+    
+} 
+
+const showAscDesc = (data, select) => {
+
+  if (select === 1) {
+    compareYear(data[0], data[1]);
+    return data.sort(compareYear);
+  } if (select === 2) {
+    compareYear(data[0], data[1]);
+    return data.sort(compareYear).reverse();
+  }
 
 }
