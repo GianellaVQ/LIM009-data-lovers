@@ -25,6 +25,7 @@ const filterByYear = (data, year) => {
   return result;
 }
 
+
 const sortYearAsc = (dataByYear) => {
   const sorted = dataByYear.sort( (a, b) => {
     if(a['Año'] > b['Año']) {
