@@ -101,16 +101,49 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
 document.getElementById("go-to-by-indicators").addEventListener("click", () => {
     decisionScreen.style.display = "none";
 
-    const showByIndicator = (obj) => {
-        const newDiv = document.createElement("DIV");
-        for(let i = 0; i < Object.keys(obj).length; i++){
-            let indTemp = `
-                <h2>${Object.keys(obj)[i]}</h2>
-                <p>El total de ${Object.keys(obj)[i]} heridos es ${Object.values(obj)[i]}.</p>
-            `
-            newDiv.innerHTML += indTemp;
-            sectionPainting.appendChild(newDiv);
-        }
-    }
-    showByIndicator(sumOfValuesByInd(newData(INJURIES)));
-})
+    // const showByIndicator = (arraySuma)  => {
+    //     const newDiv = document.createElement("DIV");
+        
+    //     for (let i = 0; i < arraySuma.length; i++) {
+    //         let indTemp = `
+    //         <article>
+    //             <h2>Tripulantes</h2>
+    //             <p>${arraySuma[i]['Tripulantes']}</p>
+    //             <h2>Ciclistas</h2>
+    //             <p>${arraySuma[i]['Ciclistas']}</p>
+    //             <h2>Ocupantes de Bus</h2>
+    //             <p>${arraySuma[i]['Ocupantes de Bus']}</p>
+    //             <h2>Motocilistas</h2>
+    //             <p>${arraySuma[i]['Motociclistas']}</p>
+    //             <h2>Peatones</h2>
+    //             <p>${arraySuma[i]['Peatones']}</p>
+    //             <h2>Pasajeros de auto</h2>
+    //             <p>${arraySuma[i]['Pasajeros de auto']}</p>
+    //         </article>
+    //             `
+    //         newDiv.innerHTML = indTemp;
+    //         sectionPainting.appendChild(newDiv);
+                        
+    //     }
+    // }
+
+    // showByIndicator(sumOfValuesByInd(newData(INJURIES)))
+    sortIndDes(sumOfValuesByInd(newData(INJURIES)))
+
+    // const showByIndicator = (obj) => {
+    //     const newDiv = document.createElement("DIV");
+    //     for(let i = 0; i < Object.keys(obj).length; i++){
+    //         let indTemp = `
+    //             <h2>${Object.keys(obj)[i]}</h2>
+    //             <p>El total de ${Object.keys(obj)[i]} heridos es ${Object.values(obj)[i]}.</p>
+    //         `
+    //         newDiv.innerHTML += indTemp;
+    //         sectionPainting.appendChild(newDiv);
+    //     }
+    // }
+
+    // showByIndicator(sumOfValuesByInd(newData(INJURIES)));
+    // sortIndicatorAsc(sumOfValuesByInd(newData(INJURIES)))
+    // ordenSort(converArrayInd(sumOfValuesByInd(newData(INJURIES))))
+    
+});
