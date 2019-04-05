@@ -6,6 +6,13 @@ const selectSection = document.getElementById("filter-select");
       selectSection.className = "select-section"
 let aDiv = document.createElement("DIV");
 const sectionPainting = document.getElementById("pared");
+const selectToSort = `
+<select id="sort-select">
+<option value="ASC">Ascendente</option>
+<option value="DSC">Descendente</option>
+</select>
+`
+
 
 document.getElementById("go-to-folios").addEventListener("click", () => {
     document.getElementById("first-view").style.display = "none";
@@ -66,15 +73,12 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
         <option value="2016">2016</option>
       </select>
 
-      <select id="sort-select">
-        <option value="ASC">Ascendente</option>
-        <option value="DSC">Descendente</option>
-      </select>
+      ${selectToSort}
     `
     aDiv.innerHTML = selectTemplate;
     selectSection.appendChild(aDiv);
     const yearSelector = document.getElementById("year-select");
-    const yearSorter = document.getElementById("sort-select")
+    const yearSorter = document.getElementById("sort-select");
     showByYear(newData(INJURIES), sectionPainting);
 
     yearSelector.addEventListener("change", () => {
@@ -92,7 +96,7 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
         sectionPainting.innerHTML = "";
         if (typeOfSort === "DSC"){
             showByYear(sortYearDsc(newData(INJURIES)), sectionPainting);
-        }else{
+        } else {
             showByYear(sortYearAsc(newData(INJURIES)), sectionPainting);
         }
     })
@@ -101,16 +105,30 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
 document.getElementById("go-to-by-indicators").addEventListener("click", () => {
     decisionScreen.style.display = "none";
 
-    const showByIndicator = (obj) => {
+    const showByIndicator = (arr, sectionPainted) => {
         const newDiv = document.createElement("DIV");
-        for(let i = 0; i < Object.keys(obj).length; i++){
+        newDiv.innerHTML += selectToSort;
+
+        for (let i = 0; i < arr.length; i++) {
             let indTemp = `
-                <h2>${Object.keys(obj)[i]}</h2>
-                <p>El total de ${Object.keys(obj)[i]} heridos es ${Object.values(obj)[i]}.</p>
-            `
-            newDiv.innerHTML += indTemp;
-            sectionPainting.appendChild(newDiv);
+                <h2>${Object.keys(arr[i])}</h2> 
+                <p>${Object.values(arr[i])}</p>
+                `    
+            newDiv.innerHTML += indTemp;            
         }
-    }
-    showByIndicator(sumOfValuesByInd(newData(INJURIES)));
+        return sectionPainted.appendChild(newDiv);
+    };
+
+    showByIndicator(sumOfValuesByInd(newData(INJURIES)), sectionPainting);
+    const indSorter = document.getElementById("sort-select");
+
+    indSorter.addEventListener("change", () => {
+        const typeOfSort = indSorter.value;
+        sectionPainting.innerHTML = "";
+        if (typeOfSort === "DSC"){
+            showByIndicator(sortByIndValuesDSC(sumOfValuesByInd(newData(INJURIES))), sectionPainting);
+        } else {
+            showByIndicator(sortByIndValuesASC(sumOfValuesByInd(newData(INJURIES))), sectionPainting);        }
+    })
+    
 })

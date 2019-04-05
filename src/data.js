@@ -52,15 +52,48 @@ const sortYearDsc = (dataByYear) => {
 }
 
 const sumOfValuesByInd = (data) => {
-  const propiedades = ["Ciclistas", "Tripulantes", "Ocupantes de bus", "Motociclistas", "Peatones", "Pasajeros de auto"];
-  const theObj = {"Tripulantes" : 0, "Ciclistas" : 0, "Ocupantes de bus": 0, "Motociclistas" : 0, "Peatones" : 0, "Pasajeros de auto" : 0};
-
-  for(let i = 0; i < data.length; i++){
-    for(let e = 0; e < propiedades.length; e++){
-      if (typeof data[i][propiedades[e]] === 'number') {
-        theObj[propiedades[e]] += data[i][propiedades[e]]
+  const propiedades = ['Tripulantes','Ciclistas','Ocupantes de bus','Motociclistas','Peatones','Pasajeros de auto'];
+  let arrOfObjs = [];
+  for (let i = 0; i < propiedades.length; i++) {
+    let suma = 0;
+    for (let a = 0; a < data.length; a++) {
+      if (typeof data[a][propiedades[i]] === 'number') {
+         suma += data[a][propiedades[i]];
       }
     }
+    arrOfObjs.push({[propiedades[i]] : suma})
   }
-  return theObj;
+  return arrOfObjs;
+};
+
+const sortByIndValuesASC = (arrOfObj) => {
+  const sorted = arrOfObj.sort( (a, b) => {
+    let aa = Object.values(a)[0];
+    let bb = Object.values(b)[0];
+
+    if(aa < bb){
+      return -1
+    } else if (aa > bb){
+      return 1
+    } else {
+      return 0
+    }
+  })
+  return sorted;
+}
+
+const sortByIndValuesDSC = (arrOfObj) => {
+  const sorted = arrOfObj.sort( (a, b) => {
+    let aa = Object.values(a)[0];
+    let bb = Object.values(b)[0];
+
+    if(aa > bb){
+      return -1
+    } else if (aa < bb){
+      return 1
+    } else {
+      return 0
+    }
+  })
+  return sorted;
 }
