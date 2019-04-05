@@ -45,7 +45,6 @@ button:hover {
 .the-title{
     font-size: 3.5em;
     font-family: 'Cinzel', serif;
-    text-shadow: 5px 7px grey;
 }
 
 .the-phrase{
@@ -134,8 +133,4 @@ select {
         background-image: url(./imgs/background-ipadpro.jpg
     )
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b2e61822f3be596e06043500aba666a2c738fdaa
