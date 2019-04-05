@@ -65,9 +65,9 @@ const sumOfValuesByInd = (data) => {
       }
       obj[[arrTypeCausantes[i]]] = suma
       arraySuma.push(obj)
-  }console.log(arraySuma);
-  return arraySuma;
-  
+  }
+  // console.log(arraySuma);
+  return arraySuma; 
 };
   
 const sortIndDes = (data) => {
@@ -82,7 +82,24 @@ const sortIndDes = (data) => {
     } else {
       return 0;
     }
-  })
-  console.log(sortedInd)
+  });
+  // console.log(sortedInd)
+  return sortedInd;
+}
+
+const sortIndAsc = (data) => {
+  const sortedInd = data.sort( (a, b) => {
+    let aa = Object.values(a)[0]
+    let bb = Object.values(b)[0]
+    
+    if(aa > bb) {
+      return 1;
+    } else if (aa < bb){
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  // console.log(sortedInd)
   return sortedInd;
 }

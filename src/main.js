@@ -18,10 +18,10 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
 
     const showByYear = (data, sectionPainted) => {
         const newDiv= document.createElement("DIV");
-              newDiv.className = "containerA";
+        
         for (let i = 0; i < data.length; i++) {        
             let yearTemp = `
-                <article>
+                <article class="container-year">
                     <p> Año: ${data[i]['Año']} .</p>
                     <p> Tripulantes: ${data[i]['Tripulantes']} .</p>
                     <p> Ciclistas: ${data[i]['Ciclistas']} .</p>
@@ -100,50 +100,40 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
 
 document.getElementById("go-to-by-indicators").addEventListener("click", () => {
     decisionScreen.style.display = "none";
-
-    // const showByIndicator = (arraySuma)  => {
-    //     const newDiv = document.createElement("DIV");
+    const showByIndicator = (arraySuma)  => {
+        const newDiv = document.createElement("DIV");
         
-    //     for (let i = 0; i < arraySuma.length; i++) {
-    //         let indTemp = `
-    //         <article>
-    //             <h2>Tripulantes</h2>
-    //             <p>${arraySuma[i]['Tripulantes']}</p>
-    //             <h2>Ciclistas</h2>
-    //             <p>${arraySuma[i]['Ciclistas']}</p>
-    //             <h2>Ocupantes de Bus</h2>
-    //             <p>${arraySuma[i]['Ocupantes de Bus']}</p>
-    //             <h2>Motocilistas</h2>
-    //             <p>${arraySuma[i]['Motociclistas']}</p>
-    //             <h2>Peatones</h2>
-    //             <p>${arraySuma[i]['Peatones']}</p>
-    //             <h2>Pasajeros de auto</h2>
-    //             <p>${arraySuma[i]['Pasajeros de auto']}</p>
-    //         </article>
-    //             `
-    //         newDiv.innerHTML = indTemp;
-    //         sectionPainting.appendChild(newDiv);
-                        
-    //     }
-    // }
+        for (let i = 0; i < arraySuma.length; i++) {
+            let indTemp = `
+                <h2>${Object.keys(arraySuma[i])}</h2> 
+                <p>${Object.values(arraySuma[i])}</p> 
+                `    
+            newDiv.innerHTML += indTemp;
+            sectionPainting.appendChild(newDiv);            
+        }
+    }
 
-    // showByIndicator(sumOfValuesByInd(newData(INJURIES)))
-    sortIndDes(sumOfValuesByInd(newData(INJURIES)))
+    const selectInd = `
+        <select id="select-indicator">
+            <option value="ASC">Ascendente</option>
+            <option value="DSC">Descendente</option>
+        </select>
+    `
+    aDiv.innerHTML = selectInd;
+    selectSection.appendChild(aDiv);
+    const indicatorSelector = document.getElementById("select-indicator");
+    indicatorSelector.addEventListener("change", () =>{
+        const typeOfSort = indicatorSelector.value;
+        sectionPainting.innerHTML = "";
+        if (typeOfSort === "DSC"){
+            // showByIndicator(sortIndDsc(newData(INJURIES)), sectionPainting);
+            showByIndicator(sortIndDes(sumOfValuesByInd(newData(INJURIES))))
+        }else{
+            // showByIndicator(sortIndAsc(newData(INJURIES)), sectionPainting);
+            showByIndicator(sortIndAsc(sumOfValuesByInd(newData(INJURIES))))        } 
+    });
 
-    // const showByIndicator = (obj) => {
-    //     const newDiv = document.createElement("DIV");
-    //     for(let i = 0; i < Object.keys(obj).length; i++){
-    //         let indTemp = `
-    //             <h2>${Object.keys(obj)[i]}</h2>
-    //             <p>El total de ${Object.keys(obj)[i]} heridos es ${Object.values(obj)[i]}.</p>
-    //         `
-    //         newDiv.innerHTML += indTemp;
-    //         sectionPainting.appendChild(newDiv);
-    //     }
-    // }
+    showByIndicator(sumOfValuesByInd(newData(INJURIES)))
 
-    // showByIndicator(sumOfValuesByInd(newData(INJURIES)));
-    // sortIndicatorAsc(sumOfValuesByInd(newData(INJURIES)))
-    // ordenSort(converArrayInd(sumOfValuesByInd(newData(INJURIES))))
-    
 });
+

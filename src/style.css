@@ -112,8 +112,10 @@ header{
     font-size: 1.2em;
 }
 
-.select-section {
-    
+.container-year {
+    width: 90%;
+    margin: auto;
+    padding: 2%;
 }
 
 select {
