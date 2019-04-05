@@ -98,7 +98,7 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
             showByYear(sortYearDsc(newData(INJURIES)), sectionPainting);
         } else {
             showByYear(sortYearAsc(newData(INJURIES)), sectionPainting);
-        }
+        } 
     })
 });
 
