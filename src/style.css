@@ -11,15 +11,13 @@ body{
     background-image: url(./imgs/background-mobile.jpg);
     background-size: 100% 100%;
     background-attachment: fixed;
-
 }
 
 .container{
     width: 90%;
-    height: 98vh;
+    height: 95vh;
     margin: 2% auto;
     padding: 2% 0%;
-    display: flex;
 }
 
 .center{
@@ -30,31 +28,39 @@ body{
 button{
     text-decoration: none;
     border: none;
-    padding: 4% 6%;
-    font-size: 1.5em;
+    padding: 3% 5%;
+    font-size: 1.3em;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 3px 5px;
-    border-radius: 10px;
+    transition-duration: 0.2s;
+    background-color: rgba(255, 28, 28, 0);
+    color: rgba(180, 5, 5, 0.836);
+}
+
+.feather{
+    width: 90px;
+    height: 90px;
 }
 
 button:hover {
-    background-color: rgba(248, 212, 212, 0.445)
+    background-color: rgb(248, 212, 212, 0.445)
 }
 
 .the-title{
     font-size: 3.5em;
     font-family: 'Cinzel', serif;
+    color: rgb(255, 255, 255);
+    margin-bottom: 5%;
 }
 
 .the-phrase{
     padding: 3% 26%;
-    font-size: 2em;
-    margin-bottom: 5%;
+    font-size: 1em;
+    margin-bottom: 21%;
+    color: rgb(255, 255, 255);
 }
 
 header{
-    background-color: rgba(255, 255, 255, 0.377);
     width: 95%;
     margin: 2% auto;
     align-items: center;
@@ -65,11 +71,15 @@ header{
 
 .header-title{
     font-size: 1em;
+    color: rgb(255, 255, 255);
     font-family: 'Cinzel', serif;
+    position: fixed;
+    background-color: rgb(0, 0, 0);
+    padding-right: 45%;
 }
 
 .decision{
-    height: 70vh;
+    height: 85vh;
     flex-direction: column;
     justify-content: space-around; 
     margin-top: 10%;
@@ -78,29 +88,22 @@ header{
 .bifurcation-phrase{
     padding: 0% 25%;
     font-size: 2em;
+    color: rgb(255, 255, 255)
 }
 
 .bifurcation-buttons{
-    display: flex;
     justify-content: space-around;
 }
 
 .go-to-years{
-    background-image: url(./imgs/by-years.jpg);
-    background-attachment: fixed;
-    background-position: center;
-    color: rgba(255, 255, 255);
-    padding: 3% 5%;
+    border: 2px solid rgba(255, 28, 28, 0.836);
+    color: rgb(255, 255, 255);
     font-size: 1.5em;
 }
 
 .go-to-indicators{
-    background-image: url(./imgs/by-indicator.jpg);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: left;
-    color: rgba(255, 255, 255);
-    padding: 3% 5%;
+    border: 2px solid rgba(255, 28, 28, 0.836);
+    color: rgb(255, 255, 255);
     font-size: 1.5em;
 }
 
@@ -109,10 +112,13 @@ header{
     justify-content: space-around;
     margin-top: 5%;
     font-size: 1.2em;
+    color: rgb(255, 255, 255)
 }
 
-.select-section {
-    
+.go-back{
+    display: flex;
+    align-self: flex-end;
+    margin-top: 5%;
 }
 
 select {
@@ -120,6 +126,15 @@ select {
     background-color: white;
     box-shadow: 0 2px 0 white;
     border-radius: 2px;
+}
+
+.select-section, .wall{
+    justify-content: center;
+}
+
+.containerA{
+    margin-top: 10%;
+    color: rgb(255, 255, 255);
 }
 
 @media only screen and (min-width: 600px) {
@@ -130,7 +145,6 @@ select {
 
 @media only screen and (min-width: 1024px) {
     body{
-        background-image: url(./imgs/background-ipadpro.jpg
-    )
+        background-image: url(./imgs/background.jpg);
     }
 }

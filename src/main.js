@@ -1,11 +1,19 @@
+const firstviewSection = document.getElementById("first-view");
 const injHeader = document.getElementById("injuries-header");
-injHeader.style.display = "none";
 const decisionScreen = document.getElementById("decision-section");
-decisionScreen.style.display = "none";
-const selectSection = document.getElementById("filter-select");
-      selectSection.className = "select-section"
-let aDiv = document.createElement("DIV");
+const selectSection = document.getElementById("selects");
+      selectSection.className = "select-section";
 const sectionPainting = document.getElementById("pared");
+const arrowSection = document.getElementById("back-arrow-section");
+
+const goToBifurcation = document.getElementById("start");
+const goToYears = document.getElementById("go-to-by-years");
+const goToIndicators = document.getElementById("go-to-by-indicators");
+const goBack = document.getElementById("back-to-firstview");
+const goBackToBifurcation = document.getElementById("back-to-bifurcation");
+
+let aDiv = document.createElement("DIV");
+
 const selectToSort = `
 <select id="sort-select">
 <option value="ASC">Ascendente</option>
@@ -13,15 +21,37 @@ const selectToSort = `
 </select>
 `
 
+const firstview = () => {
+    injHeader.style.display = "none";
+    decisionScreen.style.display = "none";
+    firstviewSection.style.display = "flex";
+    sectionPainting.style.display = "none";
+    arrowSection.style.display = "none";
+};
 
-document.getElementById("go-to-folios").addEventListener("click", () => {
+const bifurcation = () => {
     document.getElementById("first-view").style.display = "none";
     injHeader.style.display = "flex";
     decisionScreen.style.display = "flex";
-});
+    sectionPainting.innerHTML = "";
+    sectionPainting.style.display = "none";
+    arrowSection.style.display = "none";
+    selectSection.style.display = "none";
 
-document.getElementById("go-to-by-years").addEventListener("click", () => {
+    goBack.addEventListener("click", () => {
+        firstview()
+    });
+}
+
+firstview();
+
+goToBifurcation.addEventListener("click", bifurcation);
+
+goToYears.addEventListener("click", () => {
     decisionScreen.style.display = "none";
+    sectionPainting.style.display = "flex";
+    arrowSection.style.display = "flex";
+    selectSection.style.display = "flex";
 
     const showByYear = (data, sectionPainted) => {
         const newDiv= document.createElement("DIV");
@@ -39,8 +69,8 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
                 </article>
             `
             newDiv.innerHTML += yearTemp;
-            sectionPainted.appendChild(newDiv);
         }
+        return sectionPainted.appendChild(newDiv);
       }
 
     const selectTemplate = `
@@ -77,8 +107,10 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
     `
     aDiv.innerHTML = selectTemplate;
     selectSection.appendChild(aDiv);
+
     const yearSelector = document.getElementById("year-select");
     const yearSorter = document.getElementById("sort-select");
+
     showByYear(newData(INJURIES), sectionPainting);
 
     yearSelector.addEventListener("change", () => {
@@ -100,27 +132,36 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
             showByYear(sortYearAsc(newData(INJURIES)), sectionPainting);
         } 
     })
+    goBackToBifurcation.addEventListener("click", bifurcation);
 });
 
-document.getElementById("go-to-by-indicators").addEventListener("click", () => {
+goToIndicators.addEventListener("click", () => {
     decisionScreen.style.display = "none";
+    sectionPainting.style.display = "flex";
+    arrowSection.style.display = "flex";
+    selectSection.style.display = "flex";
 
-    const showByIndicator = (arr, sectionPainted) => {
+
+    const showByIndicator = (data, sectionPainted) => {
         const newDiv = document.createElement("DIV");
-        newDiv.innerHTML += selectToSort;
+              newDiv.className = "containerA";
 
-        for (let i = 0; i < arr.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             let indTemp = `
-                <h2>${Object.keys(arr[i])}</h2> 
-                <p>${Object.values(arr[i])}</p>
+                <h2>${Object.keys(data[i])}</h2> 
+                <p>${Object.values(data[i])}</p>
                 `    
             newDiv.innerHTML += indTemp;            
         }
         return sectionPainted.appendChild(newDiv);
     };
 
-    showByIndicator(sumOfValuesByInd(newData(INJURIES)), sectionPainting);
+    aDiv.innerHTML = selectToSort;
+    selectSection.appendChild(aDiv);
+
     const indSorter = document.getElementById("sort-select");
+
+    showByIndicator(sumOfValuesByInd(newData(INJURIES)), sectionPainting);
 
     indSorter.addEventListener("change", () => {
         const typeOfSort = indSorter.value;
@@ -130,5 +171,5 @@ document.getElementById("go-to-by-indicators").addEventListener("click", () => {
         } else {
             showByIndicator(sortByIndValuesASC(sumOfValuesByInd(newData(INJURIES))), sectionPainting);        }
     })
-    
-})
+    goBackToBifurcation.addEventListener("click", bifurcation);
+});

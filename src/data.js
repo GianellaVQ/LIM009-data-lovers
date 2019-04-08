@@ -12,13 +12,13 @@ const newData = (data) => {
     };
     newInjuries.push(newObj);
   }
-  return newInjuries
+  return newInjuries;
 };
 
 const filterByYear = (data, year) => {
   const result = [];
   for(let i = 0; i < data.length; i++) {
-    if (parseInt(year) === parseInt(data[i]['Año'])){
+    if (parseInt(year) === parseInt(data[i]['Año'])) {
       result.push(data[i]);
     }
   }
@@ -67,34 +67,44 @@ const sumOfValuesByInd = (data) => {
   return arrOfObjs;
 };
 
-const sortByIndValuesASC = (arrOfObj) => {
-  const sorted = arrOfObj.sort( (a, b) => {
+const sortByIndValuesASC = (arrayOfObj) => {
+  const sorted = arrayOfObj.sort( (a, b) => {
     let aa = Object.values(a)[0];
     let bb = Object.values(b)[0];
 
     if(aa < bb){
-      return -1
+      return -1;
     } else if (aa > bb){
-      return 1
+      return 1;
     } else {
-      return 0
+      return 0;
     }
   })
   return sorted;
 }
 
-const sortByIndValuesDSC = (arrOfObj) => {
-  const sorted = arrOfObj.sort( (a, b) => {
+const sortByIndValuesDSC = (arrayOfObj) => {
+  const inverseSorted = arrayOfObj.sort( (a, b) => {
     let aa = Object.values(a)[0];
     let bb = Object.values(b)[0];
 
     if(aa > bb){
-      return -1
+      return -1;
     } else if (aa < bb){
-      return 1
+      return 1;
     } else {
-      return 0
+      return 0;
     }
   })
-  return sorted;
+  return inverseSorted;
 }
+
+
+window.data = {
+  filterByYear,
+  sortYearAsc,
+  sortYearDsc,
+  sumOfValuesByInd,
+  sortByIndValuesASC,
+  sortByIndValuesDSC
+};
