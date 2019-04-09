@@ -12,13 +12,13 @@ const newData = (data) => {
     };
     newInjuries.push(newObj);
   }
-  return newInjuries
+  return newInjuries;
 };
 
 const filterByYear = (data, year) => {
   const result = [];
   for(let i = 0; i < data.length; i++) {
-    if (parseInt(year) === parseInt(data[i]['Año'])){
+    if (parseInt(year) === parseInt(data[i]['Año'])) {
       result.push(data[i]);
     }
   }
@@ -103,3 +103,12 @@ const sortIndAsc = (data) => {
   // console.log(sortedInd)
   return sortedInd;
 }
+
+window.data = {
+  filterByYear,
+  sortYearAsc,
+  sortYearDsc,
+  sumOfValuesByInd,
+  sortByIndValuesASC,
+  sortByIndValuesDSC
+};

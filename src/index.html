@@ -13,11 +13,12 @@
         <h1 class="header-title">Heridos en USA.</h1>
       </div>
     </header>
+
     <section id="first-view" class="container center">
       <div>
-        <h1 class="the-title">Heridos de USA</h1>
-        <p class="the-phrase">Un recuento de 1960 a la actualidad.</p>
-        <button id="go-to-folios">Ir a folios</button>
+        <h1 class="the-title">Siniestros en USA</h1>
+        <button id="start"><i class="feather" data-feather="arrow-right-circle"></i></button>
+        <p class="the-phrase">Un recuento de accidentados desde 1960 a la actualidad.</p>
       </div>
     </section>
 
@@ -34,15 +35,26 @@
           <p>Accidentes ocasionados por distintos tipos de transportes</p>
           <p>Accidentes ocasionados por años desde 1960 hasta 2018</p>
         </div>
+        <div class="go-back">
+          <button id="back-to-firstview"><i class="feather" data-feather="chevrons-left"></i></button>
+        </div>
       </div>
     </section>
 
-    <section id="filter-select">
+    <section id="selects" class="select-section">
     </section>
 
-    <section id="pared">
+    <section class="wall" id="pared">
     </section>
 
+    <section class="go-back" id="back-arrow-section">
+      <button id="back-to-bifurcation"><i class="feather" data-feather="chevrons-left"></i></button>
+    </section>
+
+    <script src="./feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
     <script src="./data/injuries/injuries.js"></script>
     <script src="data.js"></script>
     <script src="main.js"></script>

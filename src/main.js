@@ -1,20 +1,57 @@
+const firstviewSection = document.getElementById("first-view");
 const injHeader = document.getElementById("injuries-header");
-injHeader.style.display = "none";
 const decisionScreen = document.getElementById("decision-section");
-decisionScreen.style.display = "none";
-const selectSection = document.getElementById("filter-select");
-      selectSection.className = "select-section"
-let aDiv = document.createElement("DIV");
+const selectSection = document.getElementById("selects");
+      selectSection.className = "select-section";
 const sectionPainting = document.getElementById("pared");
+const arrowSection = document.getElementById("back-arrow-section");
 
-document.getElementById("go-to-folios").addEventListener("click", () => {
+const goToBifurcation = document.getElementById("start");
+const goToYears = document.getElementById("go-to-by-years");
+const goToIndicators = document.getElementById("go-to-by-indicators");
+const goBack = document.getElementById("back-to-firstview");
+const goBackToBifurcation = document.getElementById("back-to-bifurcation");
+
+let aDiv = document.createElement("DIV");
+
+const selectToSort = `
+<select id="sort-select">
+<option value="ASC">Ascendente</option>
+<option value="DSC">Descendente</option>
+</select>
+`
+
+const firstview = () => {
+    injHeader.style.display = "none";
+    decisionScreen.style.display = "none";
+    firstviewSection.style.display = "flex";
+    sectionPainting.style.display = "none";
+    arrowSection.style.display = "none";
+};
+
+const bifurcation = () => {
     document.getElementById("first-view").style.display = "none";
     injHeader.style.display = "flex";
     decisionScreen.style.display = "flex";
-});
+    sectionPainting.innerHTML = "";
+    sectionPainting.style.display = "none";
+    arrowSection.style.display = "none";
+    selectSection.style.display = "none";
 
-document.getElementById("go-to-by-years").addEventListener("click", () => {
+    goBack.addEventListener("click", () => {
+        firstview()
+    });
+}
+
+firstview();
+
+goToBifurcation.addEventListener("click", bifurcation);
+
+goToYears.addEventListener("click", () => {
     decisionScreen.style.display = "none";
+    sectionPainting.style.display = "flex";
+    arrowSection.style.display = "flex";
+    selectSection.style.display = "flex";
 
     const showByYear = (data, sectionPainted) => {
         const newDiv= document.createElement("DIV");
@@ -32,8 +69,8 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
                 </article>
             `
             newDiv.innerHTML += yearTemp;
-            sectionPainted.appendChild(newDiv);
         }
+        return sectionPainted.appendChild(newDiv);
       }
 
     const selectTemplate = `
@@ -66,15 +103,14 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
         <option value="2016">2016</option>
       </select>
 
-      <select id="sort-select">
-        <option value="ASC">Ascendente</option>
-        <option value="DSC">Descendente</option>
-      </select>
+      ${selectToSort}
     `
     aDiv.innerHTML = selectTemplate;
     selectSection.appendChild(aDiv);
+
     const yearSelector = document.getElementById("year-select");
-    const yearSorter = document.getElementById("sort-select")
+    const yearSorter = document.getElementById("sort-select");
+
     showByYear(newData(INJURIES), sectionPainting);
 
     yearSelector.addEventListener("change", () => {
@@ -92,13 +128,14 @@ document.getElementById("go-to-by-years").addEventListener("click", () => {
         sectionPainting.innerHTML = "";
         if (typeOfSort === "DSC"){
             showByYear(sortYearDsc(newData(INJURIES)), sectionPainting);
-        }else{
+        } else {
             showByYear(sortYearAsc(newData(INJURIES)), sectionPainting);
         } 
     })
+    goBackToBifurcation.addEventListener("click", bifurcation);
 });
 
-document.getElementById("go-to-by-indicators").addEventListener("click", () => {
+goToIndicators.addEventListener("click", () => {
     decisionScreen.style.display = "none";
     const showByIndicator = (arraySuma)  => {
         const newDiv = document.createElement("DIV");
@@ -136,4 +173,3 @@ document.getElementById("go-to-by-indicators").addEventListener("click", () => {
     showByIndicator(sumOfValuesByInd(newData(INJURIES)))
 
 });
-
