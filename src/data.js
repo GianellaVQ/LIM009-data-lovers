@@ -25,7 +25,6 @@ const filterByYear = (data, year) => {
   return result;
 }
 
-
 const sortYearAsc = (dataByYear) => {
   const sorted = dataByYear.sort( (a, b) => {
     if(a['Año'] > b['Año']) {
@@ -53,55 +52,50 @@ const sortYearDsc = (dataByYear) => {
 }
 
 const sumOfValuesByInd = (data) => {
-  const arrTypeCausantes = ['Tripulantes','Ciclistas','Ocupantes de bus','Motociclistas','Peatones','Pasajeros de auto'];
-  let arraySuma = [];
-  for (let i = 0; i < arrTypeCausantes.length; i++) {
-      let suma = 0;
-      let obj = {};
-      for (let a = 0; a < data.length; a++) {
-          if (typeof data[a][arrTypeCausantes[i]] === 'number') {
-              suma += data[a][arrTypeCausantes[i]];
-          }
+  const propiedades = ['Tripulantes','Ciclistas','Ocupantes de bus','Motociclistas','Peatones','Pasajeros de auto'];
+  let arrOfObjs = [];
+  for (let i = 0; i < propiedades.length; i++) {
+    let suma = 0;
+    for (let a = 0; a < data.length; a++) {
+      if (typeof data[a][propiedades[i]] === 'number') {
+         suma += data[a][propiedades[i]];
       }
-      obj[[arrTypeCausantes[i]]] = suma
-      arraySuma.push(obj)
+    }
+    arrOfObjs.push({[propiedades[i]] : suma})
   }
-  // console.log(arraySuma);
-  return arraySuma; 
+  return arrOfObjs;
 };
-  
-const sortIndDes = (data) => {
-  const sortedInd = data.sort( (a, b) => {
-    let aa = Object.values(a)[0]
-    let bb = Object.values(b)[0]
-    
-    if(aa < bb) {
-      return 1;
-    } else if (aa > bb){
+
+const sortByIndValuesASC = (arrayOfObj) => {
+  const sorted = arrayOfObj.sort( (a, b) => {
+    let aa = Object.values(a)[0];
+    let bb = Object.values(b)[0];
+
+    if(aa < bb){
       return -1;
+    } else if (aa > bb){
+      return 1;
     } else {
       return 0;
     }
-  });
-  // console.log(sortedInd)
-  return sortedInd;
+  })
+  return sorted;
 }
 
-const sortIndAsc = (data) => {
-  const sortedInd = data.sort( (a, b) => {
-    let aa = Object.values(a)[0]
-    let bb = Object.values(b)[0]
-    
-    if(aa > bb) {
-      return 1;
-    } else if (aa < bb){
+const sortByIndValuesDSC = (arrayOfObj) => {
+  const inverseSorted = arrayOfObj.sort( (a, b) => {
+    let aa = Object.values(a)[0];
+    let bb = Object.values(b)[0];
+
+    if(aa > bb){
       return -1;
+    } else if (aa < bb){
+      return 1;
     } else {
       return 0;
     }
-  });
-  // console.log(sortedInd)
-  return sortedInd;
+  })
+  return inverseSorted;
 }
 
 window.data = {

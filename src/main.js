@@ -55,10 +55,10 @@ goToYears.addEventListener("click", () => {
 
     const showByYear = (data, sectionPainted) => {
         const newDiv= document.createElement("DIV");
-        
+              newDiv.className = "containerA";
         for (let i = 0; i < data.length; i++) {        
             let yearTemp = `
-                <article class="container-year">
+                <article>
                     <p> Año: ${data[i]['Año']} .</p>
                     <p> Tripulantes: ${data[i]['Tripulantes']} .</p>
                     <p> Ciclistas: ${data[i]['Ciclistas']} .</p>
@@ -137,39 +137,38 @@ goToYears.addEventListener("click", () => {
 
 goToIndicators.addEventListener("click", () => {
     decisionScreen.style.display = "none";
-    const showByIndicator = (arraySuma)  => {
-        const newDiv = document.createElement("DIV");
-        
-        for (let i = 0; i < arraySuma.length; i++) {
-            let indTemp = `
-                <h2>${Object.keys(arraySuma[i])}</h2> 
-                <p>${Object.values(arraySuma[i])}</p> 
-                `    
-            newDiv.innerHTML += indTemp;
-            sectionPainting.appendChild(newDiv);            
-        }
-    }
+    sectionPainting.style.display = "flex";
+    arrowSection.style.display = "flex";
+    selectSection.style.display = "flex";
 
-    const selectInd = `
-        <select id="select-indicator">
-            <option value="ASC">Ascendente</option>
-            <option value="DSC">Descendente</option>
-        </select>
-    `
-    aDiv.innerHTML = selectInd;
+    const showByIndicator = (data, sectionPainted) => {
+        const newDiv = document.createElement("DIV");
+              newDiv.className = "containerA";
+
+        for (let i = 0; i < data.length; i++) {
+            let indTemp = `
+                <h2>${Object.keys(data[i])}</h2> 
+                <p>${Object.values(data[i])}</p>
+                `    
+            newDiv.innerHTML += indTemp;            
+        }
+        return sectionPainted.appendChild(newDiv);
+    };
+
+    aDiv.innerHTML = selectToSort;
     selectSection.appendChild(aDiv);
-    const indicatorSelector = document.getElementById("select-indicator");
-    indicatorSelector.addEventListener("change", () =>{
-        const typeOfSort = indicatorSelector.value;
+
+    const indSorter = document.getElementById("sort-select");
+
+    showByIndicator(sumOfValuesByInd(newData(INJURIES)), sectionPainting);
+
+    indSorter.addEventListener("change", () => {
+        const typeOfSort = indSorter.value;
         sectionPainting.innerHTML = "";
         if (typeOfSort === "DSC"){
-            // showByIndicator(sortIndDsc(newData(INJURIES)), sectionPainting);
-            showByIndicator(sortIndDes(sumOfValuesByInd(newData(INJURIES))))
-        }else{
-            // showByIndicator(sortIndAsc(newData(INJURIES)), sectionPainting);
-            showByIndicator(sortIndAsc(sumOfValuesByInd(newData(INJURIES))))        } 
-    });
-
-    showByIndicator(sumOfValuesByInd(newData(INJURIES)))
-
+            showByIndicator(sortByIndValuesDSC(sumOfValuesByInd(newData(INJURIES))), sectionPainting);
+        } else {
+            showByIndicator(sortByIndValuesASC(sumOfValuesByInd(newData(INJURIES))), sectionPainting);        }
+    })
+    goBackToBifurcation.addEventListener("click", bifurcation);
 });
