@@ -53,52 +53,56 @@ const sortYearDsc = (dataByYear) => {
 }
 
 const sumOfValuesByInd = (data) => {
-  const propiedades = ['Tripulantes','Ciclistas','Ocupantes de bus','Motociclistas','Peatones','Pasajeros de auto'];
-  let arrOfObjs = [];
-  for (let i = 0; i < propiedades.length; i++) {
-    let suma = 0;
-    for (let a = 0; a < data.length; a++) {
-      if (typeof data[a][propiedades[i]] === 'number') {
-         suma += data[a][propiedades[i]];
+  const arrTypeCausantes = ['Tripulantes','Ciclistas','Ocupantes de bus','Motociclistas','Peatones','Pasajeros de auto'];
+  let arraySuma = [];
+  for (let i = 0; i < arrTypeCausantes.length; i++) {
+      let suma = 0;
+      let obj = {};
+      for (let a = 0; a < data.length; a++) {
+          if (typeof data[a][arrTypeCausantes[i]] === 'number') {
+              suma += data[a][arrTypeCausantes[i]];
+          }
       }
-    }
-    arrOfObjs.push({[propiedades[i]] : suma})
+      obj[[arrTypeCausantes[i]]] = suma
+      arraySuma.push(obj)
   }
-  return arrOfObjs;
+  // console.log(arraySuma);
+  return arraySuma; 
 };
-
-const sortByIndValuesASC = (arrayOfObj) => {
-  const sorted = arrayOfObj.sort( (a, b) => {
-    let aa = Object.values(a)[0];
-    let bb = Object.values(b)[0];
-
-    if(aa < bb){
-      return -1;
+  
+const sortIndDes = (data) => {
+  const sortedInd = data.sort( (a, b) => {
+    let aa = Object.values(a)[0]
+    let bb = Object.values(b)[0]
+    
+    if(aa < bb) {
+      return 1;
     } else if (aa > bb){
-      return 1;
-    } else {
-      return 0;
-    }
-  })
-  return sorted;
-}
-
-const sortByIndValuesDSC = (arrayOfObj) => {
-  const inverseSorted = arrayOfObj.sort( (a, b) => {
-    let aa = Object.values(a)[0];
-    let bb = Object.values(b)[0];
-
-    if(aa > bb){
       return -1;
-    } else if (aa < bb){
-      return 1;
     } else {
       return 0;
     }
-  })
-  return inverseSorted;
+  });
+  // console.log(sortedInd)
+  return sortedInd;
 }
 
+const sortIndAsc = (data) => {
+  const sortedInd = data.sort( (a, b) => {
+    let aa = Object.values(a)[0]
+    let bb = Object.values(b)[0]
+    
+    if(aa > bb) {
+      return 1;
+    } else if (aa < bb){
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  // console.log(sortedInd)
+  return sortedInd;
+}
 
 window.data = {
   filterByYear,
