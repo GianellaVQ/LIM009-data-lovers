@@ -7,6 +7,12 @@
   },
   "extends": "eslint:recommended",
   "globals": {
-    "example": false
+    "data": false,
+    "INJURIES": false,
+    "newData": false,
+    "filterByYear": false,
+    "sortYear": false,
+    "sumOfValuesByInd": false,
+    "sortByIndValues": false
   }
 }

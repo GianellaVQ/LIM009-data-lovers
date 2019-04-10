@@ -117,7 +117,7 @@ goToYears.addEventListener("click", () => {
         let yearSelected = parseInt(yearSelector.value);
         sectionPainting.innerHTML = "";
         if(yearSelected === 0){
-            showByYear(newData(INJURIES), sectionPainting);
+            showByYear(newData(INJURIES), sectionPainting);            
         } else {
         showByYear(filterByYear(newData(INJURIES), yearSelected), sectionPainting);
         }
@@ -127,9 +127,9 @@ goToYears.addEventListener("click", () => {
         const typeOfSort = yearSorter.value;
         sectionPainting.innerHTML = "";
         if (typeOfSort === "DSC"){
-            showByYear(sortYearDsc(newData(INJURIES)), sectionPainting);
+            showByYear(sortYear(newData(INJURIES),typeOfSort), sectionPainting);
         } else {
-            showByYear(sortYearAsc(newData(INJURIES)), sectionPainting);
+            showByYear(sortYear(newData(INJURIES),typeOfSort), sectionPainting);
         } 
     })
     goBackToBifurcation.addEventListener("click", bifurcation);
@@ -166,9 +166,10 @@ goToIndicators.addEventListener("click", () => {
         const typeOfSort = indSorter.value;
         sectionPainting.innerHTML = "";
         if (typeOfSort === "DSC"){
-            showByIndicator(sortByIndValuesDSC(sumOfValuesByInd(newData(INJURIES))), sectionPainting);
+            showByIndicator(sortByIndValues(sumOfValuesByInd(newData(INJURIES)),typeOfSort), sectionPainting);
         } else {
-            showByIndicator(sortByIndValuesASC(sumOfValuesByInd(newData(INJURIES))), sectionPainting);        }
+            showByIndicator(sortByIndValues(sumOfValuesByInd(newData(INJURIES)),typeOfSort), sectionPainting);        
+        }
     })
     goBackToBifurcation.addEventListener("click", bifurcation);
 });

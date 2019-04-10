@@ -14,42 +14,31 @@ const newData = (data) => {
   }
   return newInjuries;
 };
+window.newData = newData;
 
 const filterByYear = (data, year) => {
   const result = [];
-  for(let i = 0; i < data.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     if (parseInt(year) === parseInt(data[i]['Año'])) {
       result.push(data[i]);
     }
   }
   return result;
-}
+};
+window.filterByYear = filterByYear;
 
-const sortYearAsc = (dataByYear) => {
+const sortYear = (dataByYear, order) => {
   const sorted = dataByYear.sort( (a, b) => {
-    if(a['Año'] > b['Año']) {
-      return 1;
-    } else if (a['Año'] < b['Año']){
-      return -1;
-    } else {
-      return 0;
-    }
-  })
-  return sorted;
-}
-
-const sortYearDsc = (dataByYear) => {
-  const inverseSorted = dataByYear.sort( (a, b) => {
-    if(a['Año'] < b['Año']) {
-      return 1;
-    } else if (a['Año'] > b['Año']){
-      return -1;
-    } else {
-      return 0;
-    }
-  })
-  return inverseSorted;
-}
+   b['Año']- a['Año'];
+  });
+  if (order === 'DSC') {
+    return sorted.reverse();
+  } else {
+    return sorted;
+  }
+  
+};
+window.sortYear = sortYear;
 
 const sumOfValuesByInd = (data) => {
   const propiedades = ['Tripulantes','Ciclistas','Ocupantes de bus','Motociclistas','Peatones','Pasajeros de auto'];
@@ -61,48 +50,31 @@ const sumOfValuesByInd = (data) => {
          suma += data[a][propiedades[i]];
       }
     }
-    arrOfObjs.push({[propiedades[i]] : suma})
+    arrOfObjs.push({[propiedades[i]] : suma});
   }
   return arrOfObjs;
 };
+window.sumOfValuesByInd = sumOfValuesByInd;
 
-const sortByIndValuesASC = (arrayOfObj) => {
+const sortByIndValues = (arrayOfObj, order) => {
   const sorted = arrayOfObj.sort( (a, b) => {
     let aa = Object.values(a)[0];
     let bb = Object.values(b)[0];
-
-    if(aa < bb){
-      return -1;
-    } else if (aa > bb){
-      return 1;
-    } else {
-      return 0;
-    }
-  })
-  return sorted;
-}
-
-const sortByIndValuesDSC = (arrayOfObj) => {
-  const inverseSorted = arrayOfObj.sort( (a, b) => {
-    let aa = Object.values(a)[0];
-    let bb = Object.values(b)[0];
-
-    if(aa > bb){
-      return -1;
-    } else if (aa < bb){
-      return 1;
-    } else {
-      return 0;
-    }
-  })
-  return inverseSorted;
-}
+    bb - aa;
+  });
+  if (order  === 'DSC') {
+    return sorted.reverse();
+  } else {
+    return sorted;
+  }
+  
+};
+window.sortByIndValues = sortByIndValues;
 
 window.data = {
+  newData,
   filterByYear,
-  sortYearAsc,
-  sortYearDsc,
+  sortYear,
   sumOfValuesByInd,
-  sortByIndValuesASC,
-  sortByIndValuesDSC
+  sortByIndValues,
 };
