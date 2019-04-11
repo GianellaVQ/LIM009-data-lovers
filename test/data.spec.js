@@ -14,7 +14,8 @@ const filters = [
       'Pasajeros de auto': '--'
     }
   ];
-  let conditionFilter = 1970;
+
+  const conditionFilter = 1970;
 
   const yearAsc = [
     {
@@ -117,6 +118,7 @@ const indicadorDsc = [
     'Tripulantes': 105799
   }
 ];
+
 const indicadorAsc = [
   {
     'Tripulantes': 105799
@@ -160,7 +162,7 @@ describe('sortYear', () => {
   });
 
   it('debería retornar un array con objetos en orden descendente de 1960 a 2016', () => {
-        expect(sortYear(yearDsc,'ASC')).toEqual(yearAsc);
+    expect(sortYear(yearDsc,'ASC')).toEqual(yearAsc);
   });
 });
 
@@ -186,7 +188,7 @@ describe('sortByIndValues', () => {
   });
 
   it('debería retornar un array con objetos por indicador coon su suma total de - a +', () => {
-        expect(sortByIndValues(indicadorDsc,'ASC')).toEqual(indicadorAsc);
+    expect(sortByIndValues(indicadorDsc,'ASC')).toEqual(indicadorAsc);
   });
 });
 

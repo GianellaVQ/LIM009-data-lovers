@@ -58,7 +58,8 @@ goToYears.addEventListener("click", () => {
               newDiv.className = "containerA";
         for (let i = 0; i < data.length; i++) {        
             let yearTemp = `
-                <article>
+                <article class="">
+                    <div class="content-year">
                     <p> Año: ${data[i]['Año']} .</p>
                     <p> Tripulantes: ${data[i]['Tripulantes']} .</p>
                     <p> Ciclistas: ${data[i]['Ciclistas']} .</p>
@@ -66,12 +67,13 @@ goToYears.addEventListener("click", () => {
                     <p> Motociclistas: ${data[i]['Motociclistas']} .</p>
                     <p> Peatones: ${data[i]['Peatones']} .</p>
                     <p> Pasajeros de auto: ${data[i]['Pasajeros de auto']} .</p>
+                    </div>
                 </article>
             `
             newDiv.innerHTML += yearTemp;
         }
         return sectionPainted.appendChild(newDiv);
-      }
+    }
 
     const selectTemplate = `
       <select id="year-select">
@@ -121,17 +123,18 @@ goToYears.addEventListener("click", () => {
         } else {
         showByYear(filterByYear(newData(INJURIES), yearSelected), sectionPainting);
         }
-    })
+    });
 
     yearSorter.addEventListener("change", () => {
         const typeOfSort = yearSorter.value;
         sectionPainting.innerHTML = "";
-        if (typeOfSort === "DSC"){
+        if (typeOfSort === "DSC") {
             showByYear(sortYear(newData(INJURIES),typeOfSort), sectionPainting);
         } else {
             showByYear(sortYear(newData(INJURIES),typeOfSort), sectionPainting);
         } 
-    })
+    });
+
     goBackToBifurcation.addEventListener("click", bifurcation);
 });
 
@@ -147,8 +150,10 @@ goToIndicators.addEventListener("click", () => {
 
         for (let i = 0; i < data.length; i++) {
             let indTemp = `
+            <div class="content-indicator">
                 <h2>${Object.keys(data[i])}</h2> 
                 <p>${Object.values(data[i])}</p>
+            </div>
                 `    
             newDiv.innerHTML += indTemp;            
         }
@@ -165,11 +170,12 @@ goToIndicators.addEventListener("click", () => {
     indSorter.addEventListener("change", () => {
         const typeOfSort = indSorter.value;
         sectionPainting.innerHTML = "";
-        if (typeOfSort === "DSC"){
+        if (typeOfSort === "DSC") {
             showByIndicator(sortByIndValues(sumOfValuesByInd(newData(INJURIES)),typeOfSort), sectionPainting);
         } else {
             showByIndicator(sortByIndValues(sumOfValuesByInd(newData(INJURIES)),typeOfSort), sectionPainting);        
         }
-    })
+    });
+
     goBackToBifurcation.addEventListener("click", bifurcation);
 });

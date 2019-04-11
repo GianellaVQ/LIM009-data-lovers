@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <header id="injuries-header">
+    <header id="injuries-header" class="header-content">
       <div>
         <h1 class="header-title">Heridos en USA.</h1>
       </div>
@@ -17,26 +17,29 @@
     <section id="first-view" class="container center">
       <div>
         <h1 class="the-title">Siniestros en USA</h1>
-        <button id="start"><i class="feather" data-feather="arrow-right-circle"></i></button>
+        <!-- <button id="start"><i class="feather" data-feather="arrow-right-circle"></i></button> -->
+
         <p class="the-phrase">Un recuento de accidentados desde 1960 a la actualidad.</p>
+        <button id="start" class="start">Empezemos</button>
       </div>
     </section>
 
     <section id="decision-section" class="container decision">
       <div>
-        <h2 class="bifurcation-phrase">Conoce nuestra información organizada por:</h2>
+        <h2 class="bifurcation-phrase">Conoce la información organizada por:</h2>
       </div>
       <div>
+        <div class="bifurcation-explications">
+          <p>Accidentes por distintos tipos de medios de transporte.</p>
+          <p>Accidentes por distintos años.</p>
+        </div>
         <div class="bifurcation-buttons">
           <button id="go-to-by-indicators" class="go-to-indicators">CAUSANTE</button>
           <button id="go-to-by-years" class="go-to-years">AÑOS</button>
         </div>
-        <div class="bifurcation-explications">
-          <p>Accidentes por distintos tipos de móviles.</p>
-          <p>Accidentes por distintos años.</p>
-        </div>
         <div class="go-back">
-          <button id="back-to-firstview"><i class="feather" data-feather="chevrons-left"></i></button>
+          <!-- <button id="back-to-firstview"><i class="feather" data-feather="chevrons-left"></i></button> -->
+          <button id="back-to-firstview"><img src="./imgs/back.png" id="back-to-bifurcation" alt=""></button>
         </div>
       </div>
     </section>
@@ -48,13 +51,14 @@
     </section>
 
     <section class="go-back" id="back-arrow-section">
-      <button id="back-to-bifurcation"><i class="feather" data-feather="chevrons-left"></i></button>
+      <!-- <button id="back-to-bifurcation"><i class="feather" data-feather="chevrons-left"></i></button> -->
+      <button id="back-to-firstview"><img src="./imgs/back.png" id="back-to-bifurcation" alt=""></button>
     </section>
 
-    <script src="./extension/feather.min.js"></script>
+    <!-- <script src="./extension/feather.min.js"></script>
     <script>
       feather.replace()
-    </script>
+    </script> -->
     <script src="./data/injuries/injuries.js"></script>
     <script src="data.js"></script>
     <script src="main.js"></script>
