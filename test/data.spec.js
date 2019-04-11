@@ -1,6 +1,6 @@
 global.window = global;
 require('../src/data.js');
-require('../src/data/injuries/injuries.jS');
+require('../src/data/injuries/injuries.js');
 
 const dataInjuries = newData(INJURIES);
 const filters = [

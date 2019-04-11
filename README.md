@@ -53,10 +53,12 @@ El usuario desea que la web no tenga muchas vistas y que cada información que s
 ##### Prototipo de baja fidelidad
 
 1. Destok
+
 ![proto-des-1](https://user-images.githubusercontent.com/47751532/55963735-ffbcd480-5c38-11e9-9382-79c3270feff7.jpg)
 
 ##### Prototipado de alta fidelidad
 1. Movile
+
 ![pan-mov-1](https://user-images.githubusercontent.com/47751532/55963667-e1ef6f80-5c38-11e9-9c53-e67e678a0cac.PNG)
 ![pan-mov-2](https://user-images.githubusercontent.com/47751532/55963679-e582f680-5c38-11e9-9b87-32320c7950f1.PNG)
 ![pan-mov-3](https://user-images.githubusercontent.com/47751532/55963685-eb78d780-5c38-11e9-98d0-1c4af52e12c7.PNG)
@@ -73,3 +75,5 @@ El usuario desea que la web no tenga muchas vistas y que cada información que s
 * Con el primer prototipo se tenia una pantalla donde el usuario elegia, en ello tenia imagenes y un boton debajo, esto fue demasiadas cosas en una sola pantalla.
 * Con la pantalla de mostrar por años se agrego un ordenado de ascende y descente, está sugerencia nos brindo el usuario.
 * En la pantalla de causantes mostravamos el causante y un pequeño párrafo descriptivo, pero el usuario solo queria el causante y la cifra.
+
+Zeplin : zpl.io/aMW5q5R
